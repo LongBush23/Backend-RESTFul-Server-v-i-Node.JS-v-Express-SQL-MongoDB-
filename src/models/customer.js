@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 //shape data
 const customerSchema = new mongoose.Schema(
   {
-    name: { type: String, require: true },
+    name: { type: String, required: true },
     address: String,
     phone: String,
     email: String,

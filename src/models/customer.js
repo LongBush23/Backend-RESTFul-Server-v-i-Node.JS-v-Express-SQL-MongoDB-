@@ -6,7 +6,6 @@ const customerSchema = new mongoose.Schema(
     name: { type: String, require: true },
     address: String,
     phone: String,
-
     email: String,
     image: String,
     description: String,
@@ -14,6 +13,6 @@ const customerSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Customer = mongoose.model("user", customerSchema);
+const Customer = mongoose.model("Customer", customerSchema);
 
 module.exports = Customer;

@@ -47,7 +47,15 @@ module.exports = {
     });
   },
   getAllCustomers: async (req, res) => {
-    let results = await getAllCustomerService();
+    console.log(req.query);
+    let limit = req.query.limit;
+    let page = req.query.page;
+    let results = null;
+    if (limit && page) {
+      results = await getAllCustomerService(limit, page);
+    } else {
+      results = await getAllCustomerService();
+    }
     return res.status(200).json({
       EC: 0,
       data: results,
@@ -70,6 +78,15 @@ module.exports = {
   deleteACustomer: async (req, res) => {
     let id = req.body.id;
     let result = await deleteACustomersService(id);
+    return res.status(200).json({
+      EC: 0,
+      data: result,
+    });
+  },
+  deleteArrayCustomer: async (req, res) => {
+    let ids = req.body.customersId;
+    console.log(ids);
+    let result = await deleteArrayCustomersService(ids);
     return res.status(200).json({
       EC: 0,
       data: result,

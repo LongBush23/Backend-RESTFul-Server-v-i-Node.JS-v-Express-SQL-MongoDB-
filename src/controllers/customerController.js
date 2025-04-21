@@ -47,12 +47,14 @@ module.exports = {
     });
   },
   getAllCustomers: async (req, res) => {
-    console.log(req.query);
+    // console.log(">>> filter: ", query);
+
     let limit = req.query.limit;
     let page = req.query.page;
+    let name = req.query.name;
     let results = null;
     if (limit && page) {
-      results = await getAllCustomerService(limit, page);
+      results = await getAllCustomerService(limit, page, name, req.query);
     } else {
       results = await getAllCustomerService();
     }
